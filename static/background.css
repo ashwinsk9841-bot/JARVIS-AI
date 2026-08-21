@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#jarvis-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -999;
+    overflow: hidden;
+    background: radial-gradient(circle at center,
+        #08152b 0%,
+        #040814 40%,
+        #000000 100%);
+}
+
+.aurora-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    filter: blur(70px);
+    opacity: 0.45;
+    border-radius: 45%;
+    animation: float 18s ease-in-out infinite;
+}
+
+.wave1{
+    background:#00e5ff;
+    top:-40%;
+    left:-35%;
+}
+
+.wave2{
+    background:#7b2cff;
+    bottom:-45%;
+    right:-35%;
+    animation-duration:22s;
+}
+
+.wave3{
+    background:#1d7fff;
+    top:25%;
+    left:20%;
+    animation-duration:28s;
+}
+
+@keyframes float{
+    0%{
+        transform:translate(0,0) rotate(0deg) scale(1);
+    }
+    25%{
+        transform:translate(120px,-80px) rotate(90deg) scale(1.1);
+    }
+    50%{
+        transform:translate(-80px,80px) rotate(180deg) scale(1);
+    }
+    75%{
+        transform:translate(80px,40px) rotate(270deg) scale(1.15);
+    }
+    100%{
+        transform:translate(0,0) rotate(360deg) scale(1);
+    }
+}

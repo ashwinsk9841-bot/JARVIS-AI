@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3"
+  },
+  "name": "datasphere_agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwinsk9841-bot/JARVIS-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ashwinsk9841-bot/JARVIS-AI/issues"
+  },
+  "homepage": "https://github.com/ashwinsk9841-bot/JARVIS-AI#readme"
+}

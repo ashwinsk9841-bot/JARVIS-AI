@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:transparent;
+display:flex;
+justify-content:center;
+align-items:center;
+height:180px;
+overflow:hidden;
+}
+
+.jarvis{
+display:flex;
+gap:120px;
+}
+
+.eye{
+width:90px;
+height:90px;
+border:4px solid #00eaff;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:
+0 0 15px #00eaff,
+0 0 40px #00eaff,
+0 0 80px #00eaff;
+animation:glow 1.5s infinite alternate;
+}
+
+.pupil{
+width:26px;
+height:26px;
+background:#00eaff;
+border-radius:50%;
+transition:.08s linear;
+box-shadow:0 0 20px cyan;
+}
+
+@keyframes glow{
+
+0%{
+box-shadow:
+0 0 10px cyan,
+0 0 20px cyan;
+}
+
+100%{
+box-shadow:
+0 0 35px cyan,
+0 0 70px cyan;
+}
+
+}
+
+@keyframes blink{
+
+0%,95%,100%{
+transform:scaleY(1);
+}
+
+97%{
+transform:scaleY(.05);
+}
+
+}
+
+.eye{
+animation:
+glow 2s infinite alternate,
+blink 5s infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="jarvis">
+
+<div class="eye">
+<div class="pupil"></div>
+</div>
+
+<div class="eye">
+<div class="pupil"></div>
+</div>
+
+</div>
+
+<script>
+
+document.addEventListener("mousemove",(e)=>{
+
+document.querySelectorAll(".pupil").forEach((pupil)=>{
+
+const eye=pupil.parentElement;
+
+const rect=eye.getBoundingClientRect();
+
+const x=e.clientX-(rect.left+rect.width/2);
+
+const y=e.clientY-(rect.top+rect.height/2);
+
+const angle=Math.atan2(y,x);
+
+const moveX=Math.cos(angle)*15;
+
+const moveY=Math.sin(angle)*15;
+
+pupil.style.transform=`translate(${moveX}px,${moveY}px)`;
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

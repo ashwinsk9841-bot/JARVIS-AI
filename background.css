@@ -1,0 +1,21 @@
+#jarvis-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(
+        180deg,
+        #020611,
+        #071a2d,
+        #020611
+    );
+    overflow: hidden;
+}
+
+#bgCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
