@@ -37,23 +37,13 @@ for model_name in MODEL_CANDIDATES:
             model = genai.GenerativeModel(model_name)
             response = model.generate_content(prompt)
             return response, model_name
-
         except Exception as e:
-
             last_error = e
-
-            # If it's specifically a 404 (model not found / not available
-            # for this key), just move on and try the next model.
             if "404" in str(e) or "NOT_FOUND" in str(e):
                 continue
-
-            # For any other kind of error (bad key, network, quota, etc.)
-            # no point trying other models — raise immediately.
             raise
 
-    # If we reach here, every model in the list 404'd.
-    raise last_error
-
+    raise last_error  # <--- MUST HAVE 4 SPACES IN FRONT
 
 # =========================================================
 # 2. STREAMLIT PAGE CONFIG
