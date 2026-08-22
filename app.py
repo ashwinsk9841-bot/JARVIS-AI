@@ -30,9 +30,9 @@ def generate_content_safe(prompt: str):
     Returns (response, model_used).
     Raises the last error if every model fails.
     """
-    last_error = None
+   last_error = None
 
-for model_name in MODEL_CANDIDATES:
+    for model_name in MODEL_CANDIDATES:
         try:
             model = genai.GenerativeModel(model_name)
             response = model.generate_content(prompt)
@@ -43,8 +43,7 @@ for model_name in MODEL_CANDIDATES:
                 continue
             raise
 
-    raise last_error  # <--- MUST HAVE 4 SPACES IN FRONT
-
+    raise last_error
 # =========================================================
 # 2. STREAMLIT PAGE CONFIG
 # =========================================================
