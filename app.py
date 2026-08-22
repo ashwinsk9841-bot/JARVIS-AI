@@ -25,25 +25,9 @@ MODEL_CANDIDATES = [
 
 
 def generate_content_safe(prompt: str):
-    """
-    Tries each model in MODEL_CANDIDATES in order.
-    Returns (response, model_used).
-    Raises the last error if every model fails.
-    """
-   last_error = None
-
-    for model_name in MODEL_CANDIDATES:
-        try:
-            model = genai.GenerativeModel(model_name)
-            response = model.generate_content(prompt)
-            return response, model_name
-        except Exception as e:
-            last_error = e
-            if "404" in str(e) or "NOT_FOUND" in str(e):
-                continue
-            raise
-
-    raise last_error
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(prompt)
+    return response, "gemini-1.5-flash"
 # =========================================================
 # 2. STREAMLIT PAGE CONFIG
 # =========================================================
