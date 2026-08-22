@@ -1,9 +1,6 @@
 streamlit
-google-api-core
-grpcio-status
-watchdog
-uvicorn
-websockets
-uritemplate
-tzdata
-typing_extensions
+pandas
+matplotlib
+python-dotenv
+google-genai
+google-generativeai
