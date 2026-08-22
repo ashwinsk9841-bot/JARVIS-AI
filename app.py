@@ -17,9 +17,9 @@ if not api_key:
 
 genai.configure(api_key=api_key,transport="rest")
 MODEL_CANDIDATES = [
-    "gemini-1.5-flash-latest",
-    "gemini-1.5-pro-latest",
-    "gemini-1.0-pro",
+    "gemini-flash-latest",
+    "gemini-3.5-flash",
+    "gemini-2.5-flash",
 ]
 
 def generate_content_safe(prompt: str):
@@ -27,7 +27,7 @@ def generate_content_safe(prompt: str):
     for model_name in MODEL_CANDIDATES:
         try:
             model = genai.GenerativeModel(model_name)
-            response = model.generate_content(prompt)
+            response = model.generate_content(agent_prompt)
             return response, model_name
         except Exception as e:
             last_error = e
