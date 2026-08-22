@@ -15,11 +15,11 @@ if not api_key:
     st.error("GEMINI_API_KEY not found. Check Streamlit Secrets or .env file.")
     st.stop()
 
-genai.configure(api_key=api_key)
+genai.configure(api_key=api_key,transport="rest")
 MODEL_CANDIDATES = [
-    "gemini-1.5-flash",
-    "gemini-1.5-pro",
-    "gemini-pro",
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-pro-latest",
+    "gemini-1.0-pro",
 ]
 
 def generate_content_safe(prompt: str):
