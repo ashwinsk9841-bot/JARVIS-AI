@@ -18,20 +18,15 @@ if not api_key:
 genai.configure(api_key=api_key)
 
 MODEL_CANDIDATES = [
-    "gemini-2.5flash",
     "gemini-2.0-flash-exp",
-    "gemini-1.5-flash-8b",
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-pro-latest",
 ]
 
-
 def generate_content_safe(prompt: str):
-    model = genai.GenerativeModel("gemini-2.5-flash")
+    model = genai.GenerativeModel("gemini-2.0-flash-exp")
     response = model.generate_content(prompt)
-    return response, "gemini-2.5-flash"
-# =========================================================
-# 2. STREAMLIT PAGE CONFIG
-# =========================================================
-
+    return response, "gemini-2.0-flash-exp"
 st.set_page_config(
     page_title="JARVIS AI",
     page_icon="🤖",
