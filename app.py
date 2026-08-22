@@ -16,17 +16,24 @@ if not api_key:
     st.stop()
 
 genai.configure(api_key=api_key)
-
 MODEL_CANDIDATES = [
-    "gemini-2.0-flash-exp",
-    "gemini-1.5-flash-latest",
-    "gemini-1.5-pro-latest",
+    "gemini-1.5-flash",
+    "gemini-1.5-pro",
+    "gemini-pro",
 ]
 
 def generate_content_safe(prompt: str):
-    model = genai.GenerativeModel("gemini-2.0-flash-exp")
-    response = model.generate_content(prompt)
-    return response, "gemini-2.0-flash-exp"
+    last_error = None
+    for model_name in MODEL_CANDIDATES:
+        try:
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content(prompt)
+            return response, model_name
+        except Exception as e:
+            last_error = e
+            continue
+    raise last_error
+
 st.set_page_config(
     page_title="JARVIS AI",
     page_icon="🤖",
