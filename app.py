@@ -18,16 +18,16 @@ if not api_key:
 genai.configure(api_key=api_key)
 
 MODEL_CANDIDATES = [
-    "gemini-1.5-flash",
-    "gemini-1.5-pro",
-    "gemini-2.0-flash",
+    "gemini-2.0flash",
+    "gemini-1.5-flash-latest",
+    "gemini-pro",
 ]
 
 
 def generate_content_safe(prompt: str):
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content(prompt)
-    return response, "gemini-1.5-flash"
+    return response, "gemini-2.0-flash"
 # =========================================================
 # 2. STREAMLIT PAGE CONFIG
 # =========================================================
