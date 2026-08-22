@@ -6,32 +6,21 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import matplotlib.pyplot as plt
 
-
-# =========================================================
-# 1. ENVIRONMENT + GEMINI
-# =========================================================
-
+# 1. ENVIRONMENT + GEMINI CONFIG
 load_dotenv()
 
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = st.secrets.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
 
 if not api_key:
-    st.error("❌ GEMINI_API_KEY not found. Check your .env file.")
+    st.error("GEMINI_API_KEY not found. Check Streamlit Secrets or .env file.")
     st.stop()
 
-client = genai.Client(api_key=api_key)
+genai.configure(api_key=api_key)
 
-# NOTE (why the 404 was happening):
-# "gemini-2.5-flash" alone is now returning 404 for a lot of new API keys/
-# projects because Google has been rolling this model off for new users
-# ahead of its official shutdown date, and pushing everyone to the 3.x
-# Flash line. Instead of hardcoding ONE model name, we try a list of
-# models in order and fall back automatically if one 404s. This also
-# fits the "self-healing" idea of this app.
 MODEL_CANDIDATES = [
-    "gemini-3.5-flash",     # current-gen stable flash model (try first)
-    "gemini-2.5-flash",     # older stable, still works for some keys
-    "gemini-2.5-flash-lite",  # lighter fallback
+    "gemini-1.5-flash",
+    "gemini-1.5-pro",
+    "gemini-2.0-flash",
 ]
 
 
@@ -43,13 +32,10 @@ def generate_content_safe(prompt: str):
     """
     last_error = None
 
-    for model_name in MODEL_CANDIDATES:
-
+for model_name in MODEL_CANDIDATES:
         try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt
-            )
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content(prompt)
             return response, model_name
 
         except Exception as e:
