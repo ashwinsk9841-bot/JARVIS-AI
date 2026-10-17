@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JARVIS Remote</string>
+    <string name="pairing_hint">Ask the laptop to run: enable remote bridge. It shows an 8+ character pairing code — type it here. Only its SHA-256 hash ever leaves this phone.</string>
+    <string name="pairing_btn">Pair this phone</string>
+    <string name="forget_btn">Forget pairing</string>
+    <string name="status_unpaired">Not paired. Ask JARVIS for a pairing code.</string>
+    <string name="status_paired">Paired. This phone is control-ready (E2E).</string>
+    <string name="status_busy">Pairing…</string>
+    <string name="channel_relay">JARVIS Remote link</string>
+    <string name="notif_relay_title">JARVIS Remote</string>
+    <string name="notif_relay_text">Relay link active — dialing out (no inbound ports).</string>
+</resources>
